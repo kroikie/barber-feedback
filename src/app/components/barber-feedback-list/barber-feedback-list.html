@@ -1,0 +1,17 @@
+<div class="feedback-list-container">
+  <h1 *ngIf="barber">Feedback for {{ barber.name }}</h1>
+  <h1 *ngIf="!barber">Barber Not Found</h1>
+
+  <div *ngIf="barber">
+    <div *ngIf="feedback.length > 0; else noFeedback">
+      <div *ngFor="let item of feedback" class="feedback-item">
+        <p><strong>Rating:</strong> {{ item.rating }} / 5</p>
+        <p><strong>Comment:</strong> {{ item.comment }}</p>
+        <p class="date">Submitted on: {{ item.createdAt | date:'shortDate' }}</p>
+      </div>
+    </div>
+    <ng-template #noFeedback>
+      <p>No feedback submitted yet for {{ barber.name }}.</p>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="feedback-form-container">
+  <h1>Give Feedback</h1>
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="barber">Select Barber:</label>
+      <select id="barber" formControlName="barberId" required>
+        <option value="" disabled>--Choose a barber--</option>
+        <option *ngFor="let barber of barbers" [value]="barber.id">{{ barber.name }}</option>
+      </select>
+      <div *ngIf="feedbackForm.get('barberId')?.invalid && feedbackForm.get('barberId')?.touched" class="error-message">
+        Barber is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <select id="rating" formControlName="rating" required>
+        <option value="" disabled>--Select a rating--</option>
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
+      <div *ngIf="feedbackForm.get('rating')?.invalid && feedbackForm.get('rating')?.touched" class="error-message">
+        Rating is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea id="comment" formControlName="comment" rows="5"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="feedbackForm.invalid">Submit Feedback</button>
+  </form>
+</div>

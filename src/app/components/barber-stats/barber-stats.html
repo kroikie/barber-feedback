@@ -1,0 +1,13 @@
+<div class="stats-container">
+  <h1 *ngIf="barber">Statistics for {{ barber.name }}</h1>
+  <h1 *ngIf="!barber">Barber Not Found</h1>
+
+  <div *ngIf="barber && stats">
+    <p><strong>Total Feedback:</strong> {{ stats.totalFeedback }}</p>
+    <p><strong>Average Rating:</strong> {{ stats.averageRating | number:'1.1-1' }} / 5</p>
+    <p><strong>Satisfaction Percentage:</strong> {{ stats.satisfactionPercentage | number:'1.0-0' }}%</p>
+  </div>
+  <div *ngIf="barber && !stats">
+    <p>No statistics available for {{ barber.name }} yet.</p>
+  </div>
+</div>
