@@ -1,6 +1,6 @@
 env:
   - variable: WELCOME_MESSAGE
-    value: Welcome to Barber Voices! (env FAH)
+    value: Welcome to Barber Voices! (env FAH v3)
     availability:
       - BUILD
       - RUNTIME
