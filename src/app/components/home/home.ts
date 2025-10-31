@@ -16,6 +16,6 @@ export class HomeComponent implements OnInit {
   welcomeMessage$!: Observable<{ message: string }>;
 
   ngOnInit(): void {
-    this.welcomeMessage$ = this.welcomeService.getWelcomeMessage();
+    this.welcomeMessage$ = this.welcomeService.getWelcomeMessage(;
   }
 }
