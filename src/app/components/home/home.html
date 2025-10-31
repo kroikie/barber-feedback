@@ -1,5 +1,5 @@
 <div class="home-container">
-  <h1>Welcome to Barber Voice!!!!!</h1>
+  <h1 *ngIf="welcomeMessage$ | async as welcome">{{ welcome.message }}</h1>
   <p>Your platform to connect customers and barbers through valuable feedback.</p>
 
   <div class="roles-section">

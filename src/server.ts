@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
@@ -23,6 +24,9 @@ const angularApp = new AngularNodeAppEngine();
  * });
  * ```
  */
+app.get('/api/welcome', (req, res) => {
+  res.send({ message: process.env['WELCOME_MESSAGE'] });
+});
 
 /**
  * Serve static files from /browser
@@ -41,9 +45,7 @@ app.use(
 app.use((req, res, next) => {
   angularApp
     .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
+    .then((response) => (response ? writeResponseToNodeResponse(response, res) : next()))
     .catch(next);
 });
 
