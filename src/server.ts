@@ -25,6 +25,8 @@ const angularApp = new AngularNodeAppEngine();
  * ```
  */
 app.get('/api/welcome', (req, res) => {
+  num: number = 10;
+  quotient: number = num / 0;
   res.send({ message: process.env['WELCOME_MESSAGE'] });
 });
 
