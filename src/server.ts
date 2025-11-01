@@ -25,9 +25,15 @@ const angularApp = new AngularNodeAppEngine();
  * ```
  */
 app.get('/api/welcome', (req, res) => {
-  const num: number = 10;
-  const quotient: number = num / 0;
-  res.send({ message: process.env[`WELCOME_MESSAGE ${quotient}`] });
+  try {
+    const num: number = 10;
+    const quotient: number = num / 0;
+
+    res.send({ message: process.env[`WELCOME_MESSAGE ${quotient}`] });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'An error occurred' });
+  }
 });
 
 /**
